@@ -1,1 +1,2 @@
-# Manipulando-arquivos-em-txt
+# Alguns exercícios em Python 
+# Curso em Vídeo
