@@ -20,7 +20,7 @@ def escolherOpcao():
         except(TypeError, ValueError):
             print("ERRO: Digite um valor válido.")
         except(KeyboardInterrupt):
-            print("\nERRO: O usuário preferiu não digitar")
+            print("\nERRO: O usuário preferiu não digitar.")
             return ""
         else:
             return opc
@@ -32,13 +32,13 @@ def jogoAdivinhacao():
     while True:
         try:
             numero_jogador = int(input("Digite seu chute: "))
-            while 0 < numero_jogador > 100:
+            while numero_jogador < 0 or numero_jogador > 100:
                 print("ERRO: Digite somente valores entre 0 e 100.")
                 numero_jogador = int(input("Digite seu chute: "))
         except(TypeError, ValueError):
             print("ERRO: Digite um valor válido.")
         except(KeyboardInterrupt):
-            print("\nERRO: O usuário preferiu não digitar")
+            print("\nERRO: O usuário preferiu não digitar.")
             break
         else:
             contJogadas+=1
@@ -46,7 +46,7 @@ def jogoAdivinhacao():
                 sleep(0.3)
                 print(linha())
                 print("Parabéns, você acertou o número sorteado! :D")
-                print(f"Você chutou {contJogadas} veze(s).")
+                print(f"Você chutou {contJogadas} vez(es).")
                 resp = analiseResposta()
                 print(linha())
                 if resp == False:
@@ -75,6 +75,9 @@ def jogoParOuImpar():
         try:
             pc_valor = randint(0, 10)
             usuario_valor = int(input("Digite um valor: "))
+            while usuario_valor < 0 or usuario_valor > 10:
+                print("ERRO: Digite entre 0 e 10.")
+                usuario_valor = int(input("Digite um valor: "))
             usuario_jogada = str(input("Par ou Impar? [P/I] ")).strip().upper()[0]
             while usuario_jogada != "P" and usuario_jogada != "I":
                 print("ERRO: Valor inválido.")
@@ -82,7 +85,7 @@ def jogoParOuImpar():
         except(TypeError, ValueError):
             print("ERRO: Digite um valor válido.")
         except(KeyboardInterrupt):
-            print("\nERRO: O usuário preferiu não digitar")
+            print("\nERRO: O usuário preferiu não digitar.")
             break
         else:
             somaValores = usuario_valor + pc_valor
@@ -92,7 +95,7 @@ def jogoParOuImpar():
                 resultado = "ÍMPAR"
             print(linha())
             print(f"O jogador escolheu {usuario_valor} e o computador escolheu {pc_valor}. ")
-            print(f"O resultado foi {somaValores}. Deu {resultado}")
+            print(f"O resultado foi {somaValores}. Deu {resultado}.")
             print(linha())
             if resultado == "PAR":
                 if usuario_jogada == "P":
@@ -111,7 +114,7 @@ def jogoParOuImpar():
             resp = analiseResposta()
             print(linha())
             if resp == False:
-                print(f"GAME OVER! Você venceu {contVitoria} vez(es)")
+                print(f"GAME OVER! Você venceu {contVitoria} vez(es).")
                 print(linha())
                 print("Finalizando", end="")
                 for ponto in "....":
@@ -129,13 +132,13 @@ def JogoJokenpo():
             layout_opcoes(jogadas, num=0)
             jogador = int(input("Escolha sua jogada: "))
             pc = randint(0, 2)
-            while 0 < jogador > 2:
+            while jogador < 0 or jogador > 2:
                 print("ERRO: Digite entre 0 e 2.")
                 jogador = int(input("Escolha sua jogada: "))
         except(TypeError, ValueError):
             print("ERRO: Digite um valor válido.")
         except(KeyboardInterrupt):
-            print("\nERRO: O usuário preferiu não digitar")
+            print("\nERRO: O usuário preferiu não digitar.")
             break
         else:
             print(linha())
@@ -145,8 +148,9 @@ def JogoJokenpo():
             sleep(0.8)
             print("PO!")
             sleep(0.8)
-            print(f"Você escolheu {jogadas[jogador]}")
-            print(f"O computador escolheu {jogadas[pc]}")
+            print(linha())
+            print(f"Você escolheu {jogadas[jogador]}.")
+            print(f"O computador escolheu {jogadas[pc]}.")
             print(linha())
             if jogador == 0:
                 if pc == 1:
@@ -182,8 +186,8 @@ def JogoJokenpo():
             print(linha())
             if resp == False:
                 print("Placar Final!!")
-                print(f"Você ganhou {contJog} veze(s).")
-                print(f"O computador ganhou {contPC} veze(s).")
+                print(f"Você ganhou {contJog} vez(es).")
+                print(f"O computador ganhou {contPC} vez(es).")
                 print(linha())
                 print("Finalizando", end="")
                 for ponto in "....":
@@ -202,7 +206,7 @@ def analiseResposta():
         except(TypeError, ValueError, IndexError):
             print("ERRO: Digite um valor válido.")
         except(KeyboardInterrupt):
-            print("\nERRO: O usuário preferiu não digitar")
+            print("\nERRO: O usuário preferiu não digitar.")
             break
         else:
             if per == "S":
