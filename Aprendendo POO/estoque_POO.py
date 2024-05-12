@@ -1,5 +1,5 @@
 class Produto:
-    def __init__(self, nome_produto, preco, tot_estoque):
+    def __init__(self, nome_produto="<desconhecido>", preco=0, tot_estoque=0):
         self.nome_produto = str(nome_produto)
         self.preco = float(preco)
         self.tot_estoque = int(tot_estoque)
@@ -8,6 +8,10 @@ class Produto:
         print(f"Nome: {self.nome_produto}")
         print(f"Valor: R${self.preco}")
         print(f"Estoque: {self.tot_estoque}")
+    
+    def controle_estoque(self, novo_estoque=0):
+        self.tot_estoque += novo_estoque
+        print(f"Novo estoque: {self.tot_estoque}")
                
     def faturamento(self):
         return f"R${self.tot_estoque * self.preco}"
@@ -17,6 +21,6 @@ preco = float(input("Preço: R$"))
 estoque = int(input("Total no estoque: "))
 
 p1 = Produto(nome, preco, estoque)
-p1.exibir_dados()
+p1.controle_estoque()
 print(p1.faturamento())
 
